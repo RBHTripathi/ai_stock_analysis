@@ -1009,7 +1009,7 @@
   },
   {
     "stock": "UCOBANK",
-    "verdict": "EXIT",
+    "verdict": "SKIP",
     "conviction": "MEDIUM",
     "why": "The stock has suffered a massive drawdown from the portfolio's average cost of 61 to current levels (~27). Fundamentally, it is a laggard compared to other PSU banks, trading at a premium to the sector PE (12.49 vs 9.84) while offering significantly lower ROE (~9.5%) than peers like PNB or Union Bank (~18%).",
     "suggested_action": "Liquidate the existing position. The capital is better deployed in higher-conviction PSU banking plays already shortlisted (SBIN, PNB, UNIONBANK) which offer superior risk-reward profiles and stronger capital efficiency.",
@@ -3372,7 +3372,7 @@
   },
   {
     "stock": "BAJAJELEC",
-    "verdict": "EXIT",
+    "verdict": "SKIP",
     "conviction": "MEDIUM",
     "why": "The company is facing severe fundamental deterioration, reporting a significant consolidated net loss in the latest quarter with declining sales and operating profits. Technically, the stock is trading below its 50-day SMA and is flashing strong bearish reversal signals, including a Bearish Engulfing and an Evening Star pattern.",
     "suggested_action": "Liquidate the existing position to prevent further capital erosion; the combination of negative earnings and bearish technicals suggests a lack of immediate recovery catalysts, making it an inefficient use of capital compared to higher-conviction value plays.",

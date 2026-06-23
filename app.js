@@ -345,33 +345,23 @@
   }
 
   // Try, in order:
-  //   1. <script id="shortlist-data" type="application/json">…</script>
-  //      embedded in the HTML page (works under file://, no network needed)
-  //   2. fetch('overnight_shortlist.json') — server / GitHub Pages
+  //   1. fetch('overnight_shortlist.json') — server / GitHub Pages
+  //      (preferred so updates to the JSON show up immediately)
+  //   2. <script id="shortlist-data" type="application/json">…</script>
+  //      embedded in the HTML page (works under file:// when no server)
   //   3. XHR fallback for browsers that block fetch() under file://
   async function loadAny() {
-    // 1. Inline embed — preferred
-    const inline = document.getElementById('shortlist-data');
-    if (inline && inline.textContent.trim()) {
-      try {
-        return JSON.parse(inline.textContent);
-      } catch (e) {
-        throw new Error('Inline JSON is malformed: ' + e.message);
-      }
-    }
-
-    // 2. fetch()
+    // 1. fetch() the live JSON file first — picks up pipeline updates.
     try {
       const res = await fetch('overnight_shortlist.json', { cache: 'no-store' });
       if (res.ok) return await res.json();
-      throw new Error(`HTTP ${res.status}`);
-    } catch (fetchErr) {
-      // 3. XHR fallback — works under file:// in most browsers
-      if (location.protocol === 'file:') {
-        return await loadJSONViaXHR();
-      }
-      throw fetchErr;
+    } catch (_) { /* fall through */ }
+
+    // 2. XHR fallback — works under file:// in some browsers
+    if (location.protocol === 'file:') {
+      return await loadJSONViaXHR();
     }
+    throw new Error('Unable to load overnight_shortlist.json');
   }
 
   function loadJSONViaXHR() {
